@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang= "en">
+	<head>
+		<title>connect</title>
+		<style>
+		@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+
+			body{
+				background: skyblue;
+				 color:white;
+				padding: 30px;
+				font-family: verdana;
+			}
+
+			h1{
+				font-size:40px;
+				text-align:center;
+				letter-spacing: 2px;
+				text-transform:uppercase;
+		
+			}
+
+		
+			p{
+				font-size: 16px;
+				text-align:center;
+			}
+.container {
+  padding: 30px 50px;
+}
+#search-form {
+  width: 30%;
+  margin: 0 auto;
+  position: relative;
+}
+#search-form input {
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+}
+#search-form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  width: 3rem;
+  text-align: center;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: #333;
+}
+.info {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 1200px) {
+  #search-form { width: 50%; }
+}
+@media (max-width: 768px) {
+  .container { padding: 30px 35px; }
+  #search-form { width: 100%; }
+  .info { font-size: 0.5rem; }
+}
+		</style>
+
+		<meta charset="UTF-8">
+		<meta name= "viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<script src = "./control.js" defer></script>
+	</head>
+
+	<body>
+		<h1>Welcome to naCVigation ! </h1>
+		<script src = "./control.js" defer></script>
+		<!-- <button onclick = "responsiveVoice.speak('hello world')"> Say something </button> -->
+		<p>Please submit your image here :) </p>
+		<form method = "POST" action = "/uploaded" enctype="multipart/form-data" id= "submit-form">
+		   <label for = "img" > Submit images here: </label>
+		   <input type = "file" id = "img" name = "myImage" accept="image/*" >	
+		   <input type = "submit"  value = "submit" />
+	    </form>
+
+	    <div class="container">
+  <form action="https://www.google.com/search" method="get" target="_blank" id="search-form">
+    <input name="q" type="text" placeholder="Search Google..." autocomplete="off" autofocus>
+    <!-- <button type="button"><i class="fas fa-microphone"></i></button> -->
+  </form>
+  <p class="info"></p>
+</div>
+
+	    <h2> <%= typeof msg != 'undefined' ? msg  : '' %> </h2>
+	    <h2> <%= typeof file != 'undefined' ? file  : '' %> </h2>
+	</body>
+</html>
+

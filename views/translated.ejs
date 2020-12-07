@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang= "en">
+	<head>
+		<title>Camera</title>
+		<!-- <style>
+		@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+
+			body{
+				background: skyblue;
+				 color:white;
+				padding: 30px;
+				font-family: verdana;
+			}
+
+			h1{
+				font-size:40px;
+				text-align:center;
+				letter-spacing: 2px;
+				text-transform:uppercase;
+		
+			}
+
+		
+			p{
+				font-size: 16px;
+				text-align:center;
+			}
+.container {
+  padding: 30px 50px;
+}
+#search-form {
+  width: 30%;
+  margin: 0 auto;
+  position: relative;
+}
+#search-form input {
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+}
+#search-form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  width: 3rem;
+  text-align: center;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: #333;
+}
+.info {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 1200px) {
+  #search-form { width: 50%; }
+}
+@media (max-width: 768px) {
+  .container { padding: 30px 35px; }
+  #search-form { width: 100%; }
+  .info { font-size: 0.5rem; }
+}
+		</style> -->
+
+		<style>
+		@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+
+			body{
+				background: skyblue;
+				 color:white;
+				padding: 30px;
+				font-family: verdana;
+			}
+
+			h1{
+				font-size:40px;
+				text-align:center;
+				letter-spacing: 2px;
+				text-transform:uppercase;
+		
+			}
+
+		
+			p{
+				font-size: 16px;
+				text-align:center;
+			}
+.container {
+  /*padding: 30px 50px;*/
+  padding-top: 30px;
+  height:700px;
+}
+#search-form {
+  width: 85%;
+  margin: 0 auto;
+  height: 180%;
+  position: relative;
+}
+#search-form input {
+  /*width: 100%;
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  border: 2px solid #ccc;
+  border-radius: 2px;*/
+  size: 120px;
+  font-size: 50px;
+                width: 100%;
+                height: 25%;
+                display:inline-block;
+                padding:0.16em 0.6em;
+                border:0.1em solid #36739c;
+                margin:0 0.2em 0.2em 0;
+                border-radius:0.5em;
+                box-sizing: border-box;
+                text-decoration:none;
+                font-family:'Roboto',sans-serif;
+                font-weight:300;
+                color:#000000;
+                text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+                background-color:#e9f0fa;
+                text-align:center;
+                transition: all 0.15s;
+}
+#search-form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  width: 10rem;
+  text-align: center;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: #333;
+}
+.info {
+  margin-top: -55rem;
+  text-align: center;
+  font-size: 0.75rem;
+ 
+}
+
+.controller {
+  margin-top: -15rem;
+ 
+}
+
+@media (max-width: 1200px) {
+  #search-form { width: 50%; }
+}
+@media (max-width: 768px) {
+  .container { padding: 30px 35px; }
+  #search-form { width: 100%; }
+  .info { font-size: 0.5rem; }
+}
+		</style>
+
+<meta charset="UTF-8">
+		<meta name= "viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<script src = "./cameraControl.js" defer></script>
+	</head>
+
+	<body>
+		<h1>Welcome to naCVigation ! </h1>
+		<script src = "./control.js" defer></script>
+		
+	    <h2 id = "voiceIn"> <%= resultt%> </h2>
+
+		 <li><a href = "/" id="goback"> Please Resubmit your image here </a></li>
+
+	  
+
+	    <div class="container">
+  <form action="https://www.google.com/search" method="get" target="_blank" id="search-form">
+    <input name="q" type="text" placeholder="Voice Control" autocomplete="off" autofocus>
+    <!-- <button type="button"><i class="fas fa-microphone"></i></button> -->
+  </form>
+  <p class="info"></p>
+</div>
+
+	   <!--  <div class = "video-wrap">
+	    	
+	    	<video id="videoo" controls autoplay></video>
+	    </div>
+
+	    <div class = "controller">
+	    	
+	    	<button id="snap"> Capture </button>
+	    	<canvas id="canvass" width="640" height="480"></canvas>
+	    </div>
+ -->
+
+<!--  <video id="player" controls autoplay></video>
+                <button id="capture">Capture</button>
+                <canvas id="snapshot" width=320 height=240></canvas>
+	  -->
+
+	   <!--  <h2> <%= typeof msg != 'undefined' ? msg  : '' %> </h2>
+	    <h2> <%= typeof file != 'undefined' ? file  : '' %> </h2> -->
+	</body>
+</html>
+
