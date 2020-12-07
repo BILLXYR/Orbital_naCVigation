@@ -26,6 +26,12 @@ title: Developer Guide
         * [5.1 Planning ](#51-planning)
         * [5.2 Prototyping](#52-prototyping)
         * [5.3 Version control](#53-version-control)
+    * [6. User stories](#6-user-stories) 
+    * [7. Testing](#7-testing)
+        * [7.1 Performance of text extraction](#71-performance-of-text-extraction)
+        * [7.2 Choice of voice command word](#72-choice-of-voice-command-word)
+        * [7.3 Deployment](#73-deployment)   
+        * [7.4 User acceptance testing](#74-user-acceptance-testing)   
     
 
 --------------------------------------------------------------------------------------------------------------------
@@ -158,32 +164,49 @@ As mentioned above, before implementing any features, we did a thorough planning
 Throughout the development of our web application, we understand the importance and effectiveness of a version control system. We therefore utilised Git with GitHub for our version throughout the development. The ideal practice is to work on every feature as a different branch off the master, such that each feature can be pulled to merge with the master branch.
 
 
-
-
-
-
-### 5.2 User stories
+## 6. **User stories**
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
 | Priority | As a …​                                 | I want to …​                     | So that I can…​                                                                      |
 | -------- | ------------------------------------------ | ----------------------------------- | --------------------------------------------------------------------------------------- |
-| `* * *`  | user                                       | Add an expense with category        | keep track of my accounts                                                               |
-| `* * *`  | user                                       | View an expense                     | easily see the details such as dates, amount and descriptions of a specific expense     |
-| `* * *`  | user                                       | Delete an expense                   | delete the expense when I added wrongly                                                 |
-| `* * *`  | user                                       | List all expenses                   | view all expenses                                                                       |
-| `* * *`  | user                                       | Edit certain expenses               | make amendment if i enter wrong information                                             | 
-| `* * *`  | user                                       | see a brief summary of my expenses  | make better spending decision as i know which area takes uo the most                    |
-| `* * *`  | user                                       | see the list of command available   | quickly use the features and commands if i forget some of them                          |
-| `* * *`  | user                                       | Set budget                          | plan my expenses                                                                        |
-| `* * *`  | user                                       | View budget                         | view how much i can spend before exceeding the monthly limit                            |
-| `* * *`  | user                                       | Sort expenses by amount             | view existing expenses in descending/ascending order of amount                          |
-| `* * *`  | user                                       | Sort expenses by time               | view existing expenses in descending/ascending order of amount                          |
-| `* *`    | user                                       | List all categories                 | view all categories                                                                     |
-| `* *`    | user                                       | List all expenses in one category   | view all expenses spent under one category                                              |
-| `* *`    | user                                       | List all expenses in one date       | view all expenses spent on a day                                                        |
-| `* *`    | user                                       | List all expenses in one description| view all expenses spent under same description                                          |
-| `* *`    | user                                       | Convert to another currency         | view my expenses when i spend another currency such as going overseas                   |
-| `* *`    | user                                       | Show country's currency codes       | know the country's currency codes before converting                                     |
-| `* *`    | user                                       | Show country's exchange rates       | know the country's exchange rates before converting                                     |
-| `* `     | user                                       | Clear all data                      |                                                                                         |
+| `* * *`  | user                                       | have voice out function on pictures | know what is written on the pictures                                                    |
+| `* * *`  | user                                       | extract the text from the pictures  | need not to type them out and can straight away use them                                |
+| `* * *`  | user                                       | understand the text in the pictures | quickly understand what is the meaning of certain texts or words                        |
+| `* * *`  | user                                       | have voice function on the commands | no need to physically hold the device                                                   |
+
+## 7. **Testing**
+
+### 7.1 Performance of text extraction
+
+We have tried two different approaches for text extraction. The first one is OpenCV with Tesseract-OCR and the second one is Tesseract.js. 
+
+Text extraction by OpenCV and Tesseract-OCR is achieved by python. OpenCV-python and pytesseract are the libraries needed to accomplish this. Image is first processed using OpenCV, changing from RGB to BGR format. Then, Tesseract-OCR will process the formatted image to extract the text and return the extracted text. As the main application is a Node.js application, the text extraction is spawned as a child process and the result of the child process will be sent to the main process which is the main Node.js application.
+
+Tesseract.js is a Node.js package which can be directly used in the Node.js application without the need to spawn a child process. In a sense, it is more convenient to use and it is much easier to deploy and compatible with more webapp deployment platforms. However, Tesseract-OCR has a much better performance in terms of optical character recognition.
+
+Hence, in flavour of performance, it is decided to use Tesseract-OCR for text extraction.
+
+### 7.2 Choice of voice command word
+
+Different words were tested and chosen to be the voice command word for the voice control mechanism in the web page. After many rounds of testing and trials, we obtained a set of words that are easily distinguishable by the voice recognition system in the web application. For example, the word “submit” will often be misinterpreted as “summit” or even Chinese words. We then decided to use the word “go” instead of “submit” for voice command for clicking the “Submit” button. Secondly, we had also made some adjustments to the voice recognition code. For example, the word “upload” will often be misinterpreted as “wupload”. Since the word “wupload” does not exist, we made adjustments to the code to auto-correct the wrongly detected words to improve the performance of the voice recognition mechanism. These adjustments can be found in the JavaScript file “voiceControl.js” in the public folder.
+
+### 7.3 Deployment
+
+We have tried deploying our web application on different online platforms, such as Heroku, Azure and AWS. Each of the platforms have their own strengths and shortcomings. We found out that our web application has the best performance on AWS. Heroku and Azure are not compatible with the better performing version of our web application. On the other hand, AWS is compatible with the better performing version of our web application. However, currently we do not have a SSL certificate to allow users to fully utilise our functionalities. This is one of the future improvements. In contrast, deploying on Heroku or Azure has no such problems which means users can use the voice control mechanism to enjoy the convenience of our web application. Nevertheless, we have deployed our web application on both Azure and AWS for users to choose which they prefer, thus, giving more freedom for users.
+
+### 7.4 User acceptance testing
+
+We have gathered a group of volunteers to test our website. For each user, we put the users into two scenarios, one in which the user was not blindfolded and in the other scenario, the user was blindfolded in order to simulate a situation where the user is a visually-impaired person. Under these two scenarios, users were asked to use the websites and their feedback was recorded.
+
+<br>
+
+|              Tester’s background                               |                                             Good Points                                                                                                  | Areas of improvement                     |
+| -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | 
+| University student who is wearing spectacles  with 600 degrees | It is easy and simple to use. The UI looks very succinct and easy to control. The voice mechanism is great and it can truly understand my instructions.  | The control words are quite hard to remember and if possible, can try to use words that have similar meaning to the functions. | 
+| University student who is wearing spectacles with 400 degrees  | It is generally ready to use and the select and translate file is quite responsive.                                                                      | Sometimes the voice mechanism may not be able to detect my commands and I need to restate my command. Can have more translation languages.                             |
+| University student who is not wearing spectacles (no. 1)       | The result of the extraction is generally good. It is easy to use.                                                                                       | Include instruction on the website so no need to refer to README for instruction to use the website. | 
+| University student who is not wearing spectacles (no. 2)       | It is easy to use. The extraction is generally accurate. It is good when using on a smartphone as it can take pictures directly on the phone and use it  | The style of the button can be better and make the button bigger as it is not easy  to click on the smartphone. |
+| Middle age working adult (no. 1)                               | It is good to use and the translation is roughly correct.                                                                                                | The voice command words are not easy to remember. Can improve on supporting more translation language. |
+| Middle age working adult (no. 2)                               | It is easy to use and the extraction is quite accurate.                                                                                                  | When using the website on a smartphone, the button is still a bit small and the text label of the button is not clear. The voice command words can be more relevant to the instructions. |
+
