@@ -14,7 +14,7 @@ Choose a section from the table of contents below and start using UniSave.
     * [1. Overview](#1-overview)
     * [2. Quick start](#2-quick-start)
     * [3. Usage](#3-usage)
-    * [4. Command Summary](#6-command-summary)
+    * [4. Command Summary](#4-command-summary)
 
 
 --------------------------------------------------------------------------------------------------------------------
