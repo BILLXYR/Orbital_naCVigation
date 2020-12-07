@@ -37,7 +37,6 @@ that is on the right. Voice control mechanism will start.
 Roughly the one circle there, I have made it transparent for better appearance.
 Click/tap once will start and click/tap again will stop the voice command.
 <br>
-<br>
 2. There is a list of voice control commands below. Refer to the command summary below
 <br>
 <br>
@@ -66,7 +65,6 @@ different people may pronounce the same word differently and this will
 bring problems for the control. However, the words we choose are the
 easiest to pronounce and it is unlikely to pronounce very differently,
 we have some sufficient trials on this with different people.
-
 <br>
 <br>
 Yet, we know that, the word does not provide with any meaning for the
